@@ -15,3 +15,8 @@ export const cartItemsSlector = (state: RootState) => {
     };
   });
 };
+
+
+export const totalQuantity = (state: RootState) => {
+  return state.cart.reduce((total, item) => item?.quantity + total, 0);
+};

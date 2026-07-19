@@ -10,8 +10,14 @@
 }
 
 .imag-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   border: 1px solid gray;
   border-radius: 16px;
+  width: 100%;
+  height: 200px;
 }
 
 .action-card-container {
@@ -35,7 +41,7 @@
 }
 
 .card-description {
-  color: rgb(161, 159, 159);
+  color: rgb(8, 77, 14);
 }
 
 .quantity {
@@ -82,14 +88,13 @@
 }
 
 .container-form {
-  border: 1px solid gray;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 70%;
+  width: 60%;
   gap: 8px;
   margin: 20px;
   padding: 10px;
@@ -97,16 +102,33 @@
 
 .container-input {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 1px;
 }
 
 .input {
+  height: 40px;
   border: 1px solid gray;
   border-radius: 16px;
-  padding: 20px;
+  padding: 0px;
   background-color: white;
   color: black;
+}
+
+.textarea {
+  height: 100px;
+  border: 1px solid gray;
+  border-radius: 16px;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(27, 41, 9);
 }
 
 .message-error {
@@ -129,6 +151,7 @@
 
 .modal {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 60%;
@@ -161,4 +184,92 @@
   font-weight: 400;
   padding: 10px;
   background-color: white;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.input:focus,
+.btn-submit:focus {
+  outline: 2px solid rgb(168, 216, 235);
+  outline-offset: 2px;
+}
+
+.btn-add-to-cart {
+  cursor: pointer;
+  border: 1px solid green;
+  color: green;
+  background-color: white;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container-task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid gray;
+  background-color: rgb(128, 155, 146);
+  animation: addTask 5s;
+}
+
+.container-todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.container-header-todo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container-todo-form {
+  margin-bottom: 50px;
+}
+
+@keyframes addTask {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes removeTask {
+  from {
+    transform: translateX(20px);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 0.3;
+  }
+}
+
+.animation-remove {
+  animation: removeTask 5s;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme='dark'] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease; /* برای نرم شدن تغییر رنگ */
 }

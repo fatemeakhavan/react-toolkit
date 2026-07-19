@@ -58,8 +58,8 @@ const ProductForm = () => {
 
     if (!formData.description.trim()) {
       newError.description = "توضیحات الزامی است";
-    } else if (formData.description.length < 2) {
-      newError.name = "توضیحات باید حداقل 10 تا کارکتر باشد";
+    } else if (formData.description.length < 10) {
+      newError.description = "توضیحات باید حداقل 10 تا کارکتر باشد";
     }
 
     if (!formData.imag.trim()) {
@@ -85,7 +85,7 @@ const ProductForm = () => {
         description: formData.description,
       }),
     );
-    console.log("سلامسسسسسسس");
+
     setFormData({
       name: "",
       price: "",
@@ -99,48 +99,91 @@ const ProductForm = () => {
   return (
     <form className="container-form" onSubmit={(e) => handleSubmit(e)}>
       <div className="container-input">
-        <label>نام محصول:</label>
+        <label className="label" htmlFor="input-name">
+          نام محصول:
+        </label>
         <input
+          required
           className="input"
+          id="input-name"
+          type="text"
+          aria-describedby={error.name ? "error-name" : undefined}
+          aria-invalid={!!error.name}
           name="name"
           value={formData.name}
           onChange={handleChange}
         />
-        {error.name && <p className="message-error">{error.name}</p>}
+        {error.name && (
+          <p id="error-name" className="message-error" role="alert">
+            {error.name}
+          </p>
+        )}
       </div>
 
       <div className="container-input">
-        <label>قیمت محصول :</label>
+        <label className="label" htmlFor="input-price">
+          قیمت محصول :
+        </label>
         <input
+          required
+          id="input-price"
+          type="number"
+          inputMode="numeric"
+          aria-describedby={error.price ? "error-price" : undefined}
+          aria-invalid={!!error.price}
           className="input"
           name="price"
           value={formData.price}
           onChange={handleChange}
         />
-        {error.price && <p className="message-error">{error.price}</p>}
+        {error.price && (
+          <p id="error-price" className="message-error" role="alert">
+            {error.price}
+          </p>
+        )}
       </div>
 
       <div className="container-input">
-        <label>عکس محصول :</label>
+        <label className="label" htmlFor="input-imag">
+          عکس محصول :
+        </label>
         <input
+          required
+          id="input-imag"
+          aria-describedby={error.imag ? "error-imag" : undefined}
+          aria-invalid={!!error.imag}
+          type="url"
+          inputMode="url"
           name="imag"
           className="input"
           value={formData.imag}
           onChange={(e) => handleChange(e)}
         />
-        {error.imag && <p className="message-error">{error.imag}</p>}
+        {error.imag && (
+          <p id="error-imag" className="message-error" role="alert">
+            {error.imag}
+          </p>
+        )}
       </div>
 
       <div className="container-input">
-        <label>توضیحات محصول:</label>
+        <label className="label" htmlFor="input-description">
+          توضیحات محصول:
+        </label>
         <textarea
+          required
+          id="input-description"
+          aria-invalid={!!error.description}
+          aria-describedby={error.description ? "error-description" : undefined}
           name="description"
-          className="input"
+          className="textarea"
           value={formData.description}
           onChange={handleChange}
         />
         {error.description && (
-          <p className="message-error">{error.description}</p>
+          <p id="error-description" className="message-error" role="alert">
+            {error.description}
+          </p>
         )}
       </div>
 

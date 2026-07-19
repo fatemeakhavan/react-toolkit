@@ -14,11 +14,11 @@ const ProductHeader = () => {
         <button onClick={() => setModalProduct(true)}>ایجاد محصول</button>
       </div>
 
-      <Modal open={modalProduct} onClose={()=> setModalProduct(false)}>
+      <Modal title="ایجاد محصول" open={modalProduct} onClose={()=> setModalProduct(false)}>
         <ProductForm />
       </Modal>
 
-      <Modal open={modalCart} onClose={() => setModalCart(false)}>
+      <Modal title="سبد خرید" open={modalCart} onClose={() => setModalCart(false)}>
         <CartList />
       </Modal>
     </>
